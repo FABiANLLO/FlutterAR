@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter AR',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -31,12 +32,12 @@ class _MyHomePageState extends State<MyHomePage> {
   _onArCoreViewCreated(ArCoreController _arcoreController) {
     arCoreController = _arcoreController;
     _addSphere(arCoreController);
-    _addCube(arCoreController);
-    _addCyclinder(arCoreController);
+//    _addCube(arCoreController);
+//    _addCyclinder(arCoreController);
   }
 
   _addSphere(ArCoreController _arcoreController) {
-    final material = ArCoreMaterial(color: Colors.deepPurple);
+    final material = ArCoreMaterial(color: Colors.green);
     final sphere = ArCoreSphere(materials: [material], radius: 0.2);
     final node = ArCoreNode(
       shape: sphere,
@@ -91,9 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: ArCoreView(
         onArCoreViewCreated: _onArCoreViewCreated,
       ),
