@@ -37,8 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _addSphere(ArCoreController _arcoreController) {
-    final material = ArCoreMaterial(color: Colors.green);
+    final earth = ArCoreReferenceNode(
+        objectUrl: 'https://solarsystem.nasa.gov/gltf_embed/2393',
+        position: vector.Vector3(0, 0, -1));
+    final material = ArCoreMaterial(color: Colors.blue, metallic: 2.0);
     final sphere = ArCoreSphere(materials: [material], radius: 0.2);
+
     final node = ArCoreNode(
       shape: sphere,
       position: vector.Vector3(
@@ -48,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    _arcoreController.add(node);
+    _arcoreController.addArCoreNode(node);
   }
 
   _addCyclinder(ArCoreController _arcoreController) {
@@ -64,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    _arcoreController.add(node);
+    _arcoreController.addArCoreNode(node);
   }
 
   _addCube(ArCoreController _arcoreController) {
@@ -80,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    _arcoreController.add(node);
+    _arcoreController.addArCoreNode(node);
   }
 
   @override
